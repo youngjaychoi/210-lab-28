@@ -203,7 +203,7 @@ void count_goats(list<Goat> &trip) {
 }
 
 void remove_old_goats(list<Goat> &trip) {
-    trip.remove_if([](const Goat &g) { return g.get_age() > 10: });
+    trip.remove_if([](const Goat &g) { return g.get_age() > 10; });
     cout << "Old goats removed.\n";
 }
 
@@ -213,13 +213,21 @@ void reverse_goats(list<Goat> &trip) {
 }
 
 void display_oldest_goat(list<Goat> &trip) {
-
+    auto it = max_element(trip.begin(), trip.end(), [](const Goat &a, const Goat &b) { return a.get_age() < b.get_age(); });
+    if (it != trip.end()) {
+        cout << "Oldest goat: " << it->get_name() << " (" << it->get_age() << ", " << it->get_color() << ")\n";
+    }
 }
 
 void display_youngest_goat(list<Goat> &trip) {
-
+    auto it = min_element(trip.begin(), trip.end(), [](const Goat &a, const Goat &b) { return a.get_age() < b.get_age(); });
+    if (it != trip.end()) {
+        cout << "Youngest goat: " << it->get_name() << " (" << it->get_age() << ", " << it->get_color() << ")\n";
+    }
 }
 
 void unique_goats(list<Goat> &trip) {
-
+    trip.sort();
+    trip.unique([](const Goat &a, const Goat &b) { return a.get_name() == b.get_name() && a.get_age() == b.get_age() && a.get_color() == b.get_color(); });
+    cout << "Duplicate goats removed.\n";
 }
