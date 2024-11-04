@@ -13,6 +13,15 @@ void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 int main_menu();
 
+void sort_goats(list<Goat> &trip);
+void find_goat(list<Goat> &trip);
+void count_goats(list<Goat> &trip);
+void remove_old_goats(list<Goat> &trip);
+void reverse_goats(list<Goat> &trip);
+void display_oldest_goat(list<Goat> &trip);
+void display_youngest_goat(list<Goat> &trip);
+void unique_goats(list<Goat> &trip);
+
 int main() {
     srand(time(0));
     bool again;
