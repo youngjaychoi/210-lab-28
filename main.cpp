@@ -81,14 +81,31 @@ int main() {
                 count_goats(trip);
                 break;
             case 7:
-                cout << ""
+                cout << "Removing old goats.\n";
+                remove_old_goats(trip);
+                break;
+            case 8:
+                cout << "Reversing goat list.\n";
+                reverse_goats(trip);
+                break;
+            case 9:
+                cout << "Displaying the oldest goat.\n";
+                display_oldest_goat(trip);
+                break;
+            case 10:
+                cout << "Displaying the youngest goat.\n";
+                display_youngest_goat(trip);
+                break;
+            case 11:
+                cout << "Removing duplicate goats.\n";
+                unique_goats(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
         }
         sel = main_menu();
     }
-    
 
     return 0;
 }
@@ -159,25 +176,40 @@ int select_goat(list<Goat> trp) {
     return input;
 }
 
-void sort_goats(list<Goat> &trip) [
+void sort_goats(list<Goat> &trip) {
     trip.sort();
-    cout << "Goats sorted by name" << endl;
-]
+    cout << "Goats sorted by name.\n";
+}
 
 void find_goat(list<Goat> &trip) {
+    string name;
+    cout << "Enter name to search: ";
+    cin >> name;
 
+    auto it = find_if(trip.begin(), trip.end(), [name](const Goat &g) { return g.get_name() == name; });
+    if (it != trip.end()) {
+        cout << "Goat found: " << it->get_name() << " (" << it->get_age() << ", " << it->get_color() << ")\n";
+    } else {
+        cout << "Goat not found.\n";
+    }
 }
 
 void count_goats(list<Goat> &trip) {
-
+    string color;
+    cout << "Enter color to count: ";
+    cin >> color;
+    int count = count_if(trip.begin(), trip.end(), [color](const Goat &g) { return g.get_color() == color; });
+    cout << "Number of goats with color " << color << ": " << count << "\n";
 }
 
 void remove_old_goats(list<Goat> &trip) {
-
+    trip.remove_if([](const Goat &g) { return g.get_age() > 10: });
+    cout << "Old goats removed.\n";
 }
 
 void reverse_goats(list<Goat> &trip) {
-
+    trip.reverse();
+    cout << "Goat list reversed.\n";
 }
 
 void display_oldest_goat(list<Goat> &trip) {
