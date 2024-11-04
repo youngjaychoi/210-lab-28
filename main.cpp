@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iomanip>
 #include <list>
+#include <algorithm>
 #include "Goat.h"
 using namespace std;
 
@@ -53,7 +54,7 @@ int main() {
     
     // Goat Manager 3001 Engine
     int sel = main_menu();
-    while (sel != 4) {
+    while (sel != 12) {
         switch (sel) {
             case 1:
                 cout << "Adding a goat.\n";
@@ -67,6 +68,20 @@ int main() {
                 cout << "Displaying goat data.\n";
                 display_trip(trip);
                 break;
+            case 4:
+                cout << "Sorting goats.\n";
+                sort_goats(trip);
+                break;
+            case 5:
+                cout <<"Finding a goat by name.\n";
+                find_goat(trip);
+                break;
+            case 6:
+                cout << "Counting goats by color.\n";
+                count_goats(trip);
+                break;
+            case 7:
+                cout << ""
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -83,11 +98,19 @@ int main_menu() {
     cout << "[1] Add a goat\n";
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
-    cout << "[4] Quit\n";
+    cout << "[4] Sort goats\n";
+    cout << "[5] Find goat\n";
+    cout << "[6] Count goats by color\n";
+    cout << "[7] Remove old goats\n";
+    cout << "[8] Reverse goat list\n";
+    cout << "[9] Display oldest goat\n";
+    cout << "[10] Display youngest goat\n";
+    cout << "[11] Remove duplicate goats\n";
+    cout << "[12] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 4) {
+    while (choice < 1 || choice > 12) {
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -134,4 +157,37 @@ int select_goat(list<Goat> trp) {
         cin >> input;
     }
     return input;
+}
+
+void sort_goats(list<Goat> &trip) [
+    trip.sort();
+    cout << "Goats sorted by name" << endl;
+]
+
+void find_goat(list<Goat> &trip) {
+
+}
+
+void count_goats(list<Goat> &trip) {
+
+}
+
+void remove_old_goats(list<Goat> &trip) {
+
+}
+
+void reverse_goats(list<Goat> &trip) {
+
+}
+
+void display_oldest_goat(list<Goat> &trip) {
+
+}
+
+void display_youngest_goat(list<Goat> &trip) {
+
+}
+
+void unique_goats(list<Goat> &trip) {
+
 }
